@@ -1,0 +1,97 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+function settingsform_form_alter(&$form, &$form_state, $form_id) {
+
+         
+  if($form_id=='system_site_information_settings')
+  {
+
+      $form['mycustom'] = array(
+
+        '#type' => 'details',
+        '#title' => t('Site extra details'),
+        '#open' => TRUE,
+      );
+
+      $form['mycustom']['mycustomfield'] = array(
+
+        '#type' => 'textfield',
+        '#title' => t('User Name'),            
+        '#default_value' => Drupal::config('settingsform.site')->get('newfield'),
+        '#description' => t('This appears just above the site name'),
+      );
+
+   
+      $form['#submit'][]= 'settingsform_newfield_submit';
+  
+      $form['#validate'][] = 'settingsform_newfield_validate';
+
+      $form['#attached']['library'][] = 'settingsform/drupal.settingsform';
+
+  }
+        
+}        
+
+function settingsform_newfield_submit(&$form,  &$form_state){
+         
+  $config= Drupal::configFactory()->getEditable('settingsform.site');
+  $config->set('newfield',$form_state->getValue('mycustomfield'))->save();
+}
+
+
+//function settingsform_newfield_validate(&$form,  &$form_state){
+//
+//     if (!preg_match('/^[A-Za-z]+$/',$form_state->getValue('mycustomfield'))) {
+//        $form_state->setErrorByName('mycustomfield', t('User Name should contain only alphabets'));
+//     }
+//
+//}
+
+
+//function settingsform_page_attachments(array &$page) {
+//
+//    
+//    $page['#attached']['library'][] = 'settingsform/drupal.settingsform';
+//    
+//    
+//    $page['#attached']['drupalSettings']['settingsform'] = [
+//     'name' => 'settingsform_name',
+//     'interest' => 'settingsform_interest'
+//   ];
+//   }
+
+//
+//
+//function settingsform_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+//   
+//    if($build['#contextual_links']['block']['route_parameters']['block']=='headingblock'){
+//
+//          $build['#attached']['library'][] = 'settingsform/drupal.settingsform';
+//        
+//  }
+//}
+//
+
+
+
+function settingsform_help($path,$arg){
+  switch($path){
+  	case "help.page.settingsform": return t("hi this is my hook help");
+  }
+}
+//
+//function settingsform_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+//
+//  // For nodes, change the view mode when it is teaser.
+//  if ($entity->getEntityTypeId() == 'node' && $view_mode == 'teaser') {
+//        //    $view_mode = 'my_custom_view_mode'; 
+//        echo "hello";
+//  }
+//}
+

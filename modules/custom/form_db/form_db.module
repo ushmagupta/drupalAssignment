@@ -1,0 +1,9 @@
+<?php
+
+function form_db_theme() {
+     $theme['myformdb'] = [
+   
+    'variables' => ['details' => NULL]
+  ];
+  return $theme;
+}

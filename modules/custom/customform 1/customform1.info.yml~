@@ -1,0 +1,6 @@
+name: custom_form
+type: module
+description: 'my custom form module'
+package: Custom
+
+core: 8.x

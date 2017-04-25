@@ -1,0 +1,8 @@
+count_node.count:
+  path: '/count-node'
+  defaults:
+    _title: 'Display count'
+    _controller: '\Drupal\count_node\Controller\CountController::content'
+  requirements:
+    _permission: 'access content'
+

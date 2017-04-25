@@ -1,0 +1,9 @@
+<?php
+
+function contact_theme() {
+  $theme['contact'] = [
+    'template' => 'contact',
+    'variables' => ['address' => NULL]
+  ];
+  return $theme;
+}

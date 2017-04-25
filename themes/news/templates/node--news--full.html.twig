@@ -1,0 +1,55 @@
+<div class="row">
+
+<div id="content" class="col-md-12">
+
+    <article id="post-154" class="post-154 post type-post status-publish format-standard has-post-thumbnail hentry category-other-posts tag-business tag-cars tag-creative tag-sport tag-style" itemscope="" itemtype="http://schema.org/Article">
+
+        <header class="entry-header">
+            <div class="entry-image"> 
+                {{ content.field_image_s_[0] }}
+            </div>
+            <h1 class="entry-title" itemprop="name">{{ label }}</h1>
+            <div class="entry-meta border-meta">
+                <span class="entry-category">
+                    <i class="fa fa-list-ul"></i>{{ content.field_category }}				
+                </span>
+
+                <span class="vcard">
+                        <i class="fa fa-user"></i>
+                        <span itemprop="author">{{ content.field_author }}</span>
+                   
+                </span>								
+            </div>
+        </header>
+
+        <div class="entry-content" itemprop="articleBody">
+            {{ content.field_desciption }}
+        </div>
+
+        <div class="" style="text-align:center"> 
+                {{ content.field_video_s_[0] }}
+        </div>
+            
+
+        <footer class="entry-footer">
+
+            <div class="tags">
+                <span>Tags Cloud:</span>{{ content.field_tags_cloud }}			
+            </div>
+
+        </footer>
+
+    </article>
+
+    <div class="author-info">
+        <h3>Author</h3>
+        <div class="author-link">
+            {{ content.field_author }}
+
+        </div>
+        <div class="clear"></div>
+
+    </div>
+</div>
+   
+</div>

@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * @file
+ * this is custom form file
+ * */
+
+namespace Drupal\customform\Form;
+
+use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Session\AccountProxy;
+
+class CustomForm extends ConfigFormBase {
+
+  protected $config;
+  protected $currentUser;
+
+  public function getFormId() {
+    return 'custom_form_settings';
+  }
+
+  public function __construct(ConfigFactoryInterface $config_factory, AccountProxy $current_user) {
+    $this->config = $config_factory;
+    $this->currentUser = $current_user;
+  }
+
+  public static function create(ContainerInterface $container) {
+    // Instantiates this form class.
+    return new static(
+            $container->get('config.factory'), // Load the service required to construct this class.
+            $container->get('current_user')
+    );
+  }
+
+  protected function getEditableConfigNames() {
+    return [
+        'customform.CustomConfig',
+    ];
+  }
+
+  public function buildForm(array $form, FormStateInterface $form_state) {
+
+    $uid = $this->currentUser->id();
+    $site_name = $this->config->get('system.site')->get('name');
+    //drupal_set_message($this->t("User ID is : $uid"));
+    //drupal_set_message($this->t("Site Name is : $site_name"));;
+    
+    $config = $this->config->get('customform.CustomConfig');
+
+
+    $form['fieldsset_ajax'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('Category Selected'),
+        '#attributes' => ['id' => 'fieldsset-ajax']
+            //  '#prefix' => '<div id="edit-fieldsset">',
+            //  '#suffix' => '</div>',
+    ];
+
+    $form['fieldsset']['Author_name'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Author'),
+        '#default_value' => $config->get('Author_name'),
+    ];
+
+    $form['fieldsset']['Description'] = [
+        '#type' => 'textarea',
+        '#title' => $this->t('Description'),
+        '#default_value' => $config->get('Description'),
+    ];
+
+    $form['fieldsset']['Gender'] = [
+        '#type' => 'radios',
+        '#title' => $this->t('Gender'),
+        '#options' => [
+            'Male' => $this->t('Male'),
+            'Female' => $this->t('Female'),
+        ],
+        '#default_value' => $config->get('Gender'),
+    ];
+
+    $form['Category'] = [
+        '#type' => 'select',
+        '#title' => $this->t('Category'),
+        '#options' => [
+            'Education' => $this->t('Education'),
+            'Sports' => $this->t('Sports'),
+            'Politics' => $this->t('Politics'),
+        ],
+        '#ajax' => array(
+            'callback' => '::categoryChangeAjax',
+            'wrapper' => 'fieldsset-ajax',
+            'event' => 'change',
+        ),
+        '#default_value' => $config->get('Category'),
+    ];
+
+
+
+    $form['Articles'] = [
+        '#type' => 'checkboxes',
+        '#title' => $this->t('Articles'),
+        '#options' => [
+            'Article 1' => $this->t('Article 1'),
+            'Article 2' => $this->t('Article 2'),
+            'Article 3' => $this->t('Article 3'),
+        ],
+        '#default_value' => $config->get('Articles'),
+    ];
+
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['submit'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Save'),
+    ];
+
+
+    $form['actions']['delete'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Delete'),
+    ];
+
+    return $form;
+  }
+
+  function categoryChangeAjax($form, FormStateInterface $form_state) {
+
+    $method = $form_state->getValue('Category');
+    $form['fieldsset_ajax']['#title'] = $method;
+    return $form['fieldsset_ajax'];
+  }
+
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+
+
+    //kint($form_state->getValue('op')->__toString());die;
+
+    $config = $this->config->getEditable('customform.CustomConfig');
+
+    $values = $form_state->getValues();
+
+    foreach ($values as $key => $value) {
+      $config->set($key, $value);
+    }
+    $config->save();
+    drupal_set_message($this->t("Your custom cofiguration saved successfully"));
+  }
+
+}

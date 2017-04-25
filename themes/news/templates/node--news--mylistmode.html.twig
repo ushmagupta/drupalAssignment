@@ -1,0 +1,34 @@
+<div id="content" class="col-md-20">
+  <div class="posts blog-small">
+    <article id="post-124" class=" cat-2 post-124 post type-post status-publish format-image has-post-thumbnail hentry category-business post_format-post-format-image">
+
+      <div class="entry-image">
+        <div class="entry-category">
+          {{ content.field_category }}
+        </div>
+        {{ content.field_image_s_[0] }}<div class="overlay"><i class="fa fa-pencil"></i></div></div>
+
+        <div class="entry-main">
+          <h2 class="entry-title">
+            <a href="{{ url }}">{{ label }}</a>
+          </h2>
+
+          <div class="entry-meta">
+            <span class="vcard">
+              <a class="url fn" href="#"><i class="fa fa-user"></i>
+                {{ content.field_author }}
+              </a>
+            </span>					
+          </div>
+
+          <div class="entry-content">
+            {{ content.field_desciption }}
+          </div>
+          <a class="btn readmore" href="{{ url }}">Read More</a>
+        </div>
+        <div class="clear"></div>
+
+    </article>				
+  </div>
+</div>
+ 

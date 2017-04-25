@@ -1,0 +1,21 @@
+name: ushma_theme
+type: theme
+description: 'A custom theme '
+base theme: bartik
+package: custom
+core: 8.x
+
+libraries: 
+    - ushma_theme/global-css
+   
+regions:
+      head_left: header left
+      head_center: header center
+      head_right: header right
+      content: content
+      sidebar_left: sidebar left
+      sidebar_right: sidebar right
+      footer_left: Footer left
+      footer_center: Footer center
+      footer_right: Footer left
+      footer_bottom: Footer bottom

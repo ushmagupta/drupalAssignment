@@ -1,0 +1,9 @@
+<?php
+
+function count_node_theme() {
+     $theme['countNodes'] = [
+   
+    'variables' => ['count' => NULL]
+  ];
+  return $theme;
+}

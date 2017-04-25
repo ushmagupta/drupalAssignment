@@ -1,0 +1,5 @@
+drupal.settingsform:
+  js:
+    js/settingsform.js: {}
+  dependencies:
+    - core/jquery

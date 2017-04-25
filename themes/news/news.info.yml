@@ -1,0 +1,35 @@
+name: news
+type: theme
+description: 'A theme for news'
+package: Core
+base theme: classy
+# version: VERSION
+# core: 8.x
+
+libraries:
+  - news/global-css
+  - news/global-js
+  
+regions:
+   top_header: 'Top Header'
+   top_2_header_left: 'Top 2 Header Left'
+   top_2_header_right: 'Top 2 Header Right'
+   mid_header: 'Mid Header'
+   bot_header: 'Bot Header'
+   main_menu: 'Main Menu' 
+   bot_2_header: 'Bot 2 Header' 
+   top_content: 'Top Content'
+   top_2_content: 'Top 2 Content'
+   content: 'Main Content'
+   mini_sidebar: 'Mini Sidebar'
+   right_sidebar: 'Right Sidebar'
+   left_sidebar: 'Left Sidebar'
+   footer_menu: 'Footer Menu'
+   footer_widget_1: 'Footer Widget 1'
+   footer_widget_2: 'Footer Widget 2'
+   footer_widget_3: 'Footer Widget 3'
+   footer_bot_right: 'Footer Bot Right'
+
+
+version: '8.2.7'
+core: '8.x'

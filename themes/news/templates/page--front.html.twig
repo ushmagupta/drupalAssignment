@@ -1,0 +1,184 @@
+
+<div id="wrapper">
+    {% if page.top_header %}
+        <div class="header-banner-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ page.top_header }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.top_2_header_left %}
+        <div class="header-line">
+            <div class="container">
+                <div class="row">
+                    {% if page.top_2_header_right %}
+                        <div class="col-md-6 breaking-news">
+                            <div class="title">Breaking News</div>
+                            <div class="news-ticker-line">
+                                <div class="str1 str_wrap news-ticker">
+                                            {{ page.top_2_header_left }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            {{ page.top_2_header_right }}
+                        </div>
+                    {% else %}
+                        <div class="col-md-12 breaking-news">
+                            <div class="title">Breaking News</div>
+                            <div class="news-ticker-line">
+                                <div class="str1 str_wrap news-ticker">
+                                            {{ page.top_2_header_left }}
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <header class="header-row">
+        <div class="container">
+
+            <div class="col-md-12 no-padding header-container">            
+
+                <div class="col-md-4 no-padding logo-wrapper">
+
+                    <h1 id="logo">
+
+                        <img src="{{base_path}}themes/news/images/news.jpg" alt="logo"/>
+
+                    </h1>
+
+                </div>
+
+
+
+                <div class="col-md-8 floatright text-right header-link-menu">
+                    {% if page.mid_header %}
+                        {{ page.mid_header }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="skin light">
+        <div class="container">
+            {% if page.bot_header %}
+                {{ page.bot_header }}
+            {% endif %}
+            <nav id="mainnav">
+                 <a href="#search_box" id="header-main-search"><i class=""></i></a>
+                 {% if page.main_menu %}
+                        {{ page.main_menu }}
+                 {% endif %}
+            </nav>
+            {% if page.bot_2_header %}
+                {{ page.bot_2_header }}
+            {% endif %}
+
+            <main>
+                <div class="row">
+                    {% if page.left_sidebar %}
+                        {% if page.right_sidebar %}
+                            <div id="sidebar" class="ls col-md-3">
+                                {{ page.left_sidebar}}
+                            </div>
+                            <div id="content" class="col-md-6">
+                                {% if page.content %}
+                                    {{ page.content }}
+                                {% endif %}
+                            </div>
+                            <div id="sidebar" class="ls col-md-3">
+                                {{ page.right_sidebar }}
+                            </div>
+                        {% else %}
+                            <div id="sidebar" class="ls col-md-4">
+                                {{ page.left_sidebar}}
+                            </div>
+                            <div id="content" class="col-md-8">
+                                {% if page.content %}
+                                    {{ page.content }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                    {% elseif page.right_sidebar %}
+                        <div id="content" class="col-md-8">
+                            {% if page.content %}
+                                {{ page.content }}
+                            {% endif %}
+                        </div>
+                        <div id="content sidebar" class="ls col-md-4">
+                            {{ page.right_sidebar}}
+                        </div>
+
+                    {% else %}
+                        {% if page.content %}
+                            {{ page.content }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="footer-area" class="dark">
+        {% if page.footer_menu %}
+            <div class="footer-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="footer-menu-container" class="menu-main-menu-container">
+                                {{ page.footer_menu }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div id="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if page.footer_widget_1 %}
+                            {{ page.footer_widget_1 }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-4">
+                        {% if page.footer_widget_2 %}
+                            {{ page.footer_widget_2 }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-4">
+                        {% if page.footer_widget_3 %}
+                            {{ page.footer_widget_3 }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 footer">
+
+                    </div>
+                    <div class="col-md-6 text-center">
+                        {% if page.footer_bot_right %}
+                            {{ page.footer_bot_right }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</div>

@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Content Type</th>
+    <th>Count of Nodes</th>
+  </tr>
+
+  {% for type,count in result %}
+    <tr>
+      <td>{{ type }}</td>
+      <td>{{ count }}</td>
+    </tr>
+  {% endfor %}
+</table>

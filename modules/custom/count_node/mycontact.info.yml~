@@ -1,0 +1,6 @@
+name: mycontact
+type: module
+description: 'my custom module for contact'
+package: Custom
+
+core: 8.x

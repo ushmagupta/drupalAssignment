@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+  </tr>
+
+  {% for user in details %}
+    <tr>
+      <td>{{ user.name }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.email }} </td>
+      <td>{{ user.address }} </td>
+      <td>{{ user.city }} </td>
+      <td>{{ user.phone }} </td>
+    </tr>
+  {% endfor %}
+</table>

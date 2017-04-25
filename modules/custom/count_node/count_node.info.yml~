@@ -1,0 +1,6 @@
+name: form_db
+type: module
+description: 'my custom module for form details'
+package: Custom
+
+core: 8.x

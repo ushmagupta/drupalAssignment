@@ -1,0 +1,6 @@
+name: count_node
+type: module
+description: 'my custom module to count nodes of a specific content type'
+package: Custom
+
+core: 8.x

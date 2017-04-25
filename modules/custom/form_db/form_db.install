@@ -1,0 +1,49 @@
+<?php
+
+function form_db_schema() {
+  $schema['form_db_details'] = [
+      'fields' => [
+          
+        'id'=>[
+          'type'=>'serial',
+          'not null' => TRUE,
+        ],
+        'name'=>[
+          'type' => 'varchar',
+          'length' => 20,
+          'not null' => TRUE,
+        ],
+        'gender'=>[
+          'type' => 'varchar',
+          'length' => 6,
+          'not null' => TRUE,
+        ],
+          
+        'email'=>[
+          'type' => 'varchar',
+          'length' => 30,
+          'not null' => FALSE,
+        ],
+        
+        'address'=>[
+          'type' => 'varchar',
+          'length' => 30,
+          'not null' => TRUE,
+        ],
+        'city'=>[
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+        ],
+        'phone'=>[
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => FALSE,
+        ],
+      
+      ],
+      'primary key' => ['id'],
+    ];
+
+  return $schema;
+}

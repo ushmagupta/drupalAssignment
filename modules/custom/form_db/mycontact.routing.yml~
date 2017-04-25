@@ -1,0 +1,7 @@
+myservice.user:
+  path: '/mycontact'
+  defaults:
+    _title: 'My address'
+    _controller: '\Drupal\mycontact\Controller\MyContactController::content'
+  requirements:
+    _permission: 'access content'

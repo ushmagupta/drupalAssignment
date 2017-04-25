@@ -1,0 +1,16 @@
+form_db.contact_add:
+  path: '/contact-add'
+  defaults:
+    _title: 'Add Contact'
+    _form: '\Drupal\form_db\Form\MyAddForm'
+  requirements:
+    _permission: 'access content'
+    
+form_db.contact_list:
+  path: '/contact-list'
+  defaults:
+    _title: 'List contacts'
+    _controller: '\Drupal\form_db\Controller\FormdbController::content'
+  requirements:
+    _permission: 'my_custom_permission'
+

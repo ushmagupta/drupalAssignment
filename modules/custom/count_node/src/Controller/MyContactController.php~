@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * this is hello world module
+ **/
+
+namespace Drupal\mycontact\Controller;
+
+use Drupal\Core\Controller\ControllerBase;
+
+class MyContactController extends ControllerBase{
+  
+  
+  public function content(){
+    
+    $address = "Technocrat"; // do something with a model
+    return array(
+      '#theme' => 'mycontact',
+      '#address' => $address
+    );
+  }
+  
+}
